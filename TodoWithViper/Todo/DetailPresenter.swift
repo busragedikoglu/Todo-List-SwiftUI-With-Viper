@@ -1,8 +1,9 @@
 import Foundation
+import SwiftUI
 
 class DetailPresenter: ObservableObject {
     @Published var todo: Todo
-    private let router: DetailRouter
+    private var router: DetailRouter
     
     init(router: DetailRouter) {
         self.router = router
@@ -14,6 +15,10 @@ class DetailPresenter: ObservableObject {
         router.homePresenter.addTodo(todo)
         router.navigateToHome()
     }
+    
+    func setDismissAction(_ dismiss: DismissAction) {
+          router.setDismissAction(dismiss)
+      }
     
     func goBack() {
         router.navigateToHome()

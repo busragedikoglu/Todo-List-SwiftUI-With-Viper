@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var presenter: DetailPresenter
+    @Environment(\.dismiss) var dismiss
        
        var body: some View {
            VStack {
@@ -15,6 +16,9 @@ struct DetailView: View {
                }
                .disabled(presenter.todo.title.isEmpty)
                .padding()
+           }
+           .onAppear {
+               presenter.setDismissAction(dismiss)
            }
        }
    }
