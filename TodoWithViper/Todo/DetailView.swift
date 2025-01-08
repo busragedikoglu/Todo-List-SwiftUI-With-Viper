@@ -13,6 +13,7 @@ struct DetailView: View {
                Button("Save") {
                    presenter.saveTodo()
                }
+               .disabled(presenter.todo.title.isEmpty)
                .padding()
            }
        }

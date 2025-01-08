@@ -10,10 +10,9 @@ class DetailPresenter: ObservableObject {
     }
     
     func saveTodo() {
-        if !todo.title.isEmpty {
-            router.homePresenter.addTodo(todo)
-            router.navigateToHome()
-        }
+        guard !todo.title.isEmpty else { return }
+        router.homePresenter.addTodo(todo)
+        router.navigateToHome()
     }
     
     func goBack() {
